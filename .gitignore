@@ -14,3 +14,6 @@ js/reveal.min.js
 bower_components/
 node/
 node_modules/
+css/theme/white.css
+css/reveal.css
+css/theme/*.css
