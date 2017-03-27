@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.is2.it-services</groupId>
+    <artifactId>presentation-template</artifactId>
+    <version>0.0.1</version>
+    <packaging>war</packaging>
+    <name>presentation-template</name>
+    <properties>
+		<nodejs>v4.2.1</nodejs>
+		<npm>2.14.8</npm>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>0.0.29</version>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>${nodejs}</nodeVersion>
+                            <npmVersion>${npm}</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration><!-- Optional configuration which provides for running any npm command -->
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution><!-- npm installs all from package.json (bower, grunt etc...) -->
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                    <execution><!-- installs bower locally -->
+                        <id>bower install</id>
+                        <goals>
+                            <goal>bower</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install update --force-latest</arguments>
+                        </configuration>
+                    </execution>
+                    <execution><!-- Grunt exec configured in Gruntfile.js -->
+                        <id>grunt build</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>grunt</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>package</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>            
+        </plugins>
+    </build>
+    <dependencies>
+    </dependencies>
+</project>
