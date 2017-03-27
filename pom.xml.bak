@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>de.is2.zurich.oase8</groupId>
-    <artifactId>oase8-zurich-parent</artifactId>
-    <version>0.7.5-SNAPSHOT</version>
+    <groupId>de.is2.it-services</groupId>
+    <artifactId>presentation-template</artifactId>
+    <version>0.0.1</version>
     <packaging>war</packaging>
-    <name>oase8-zurich-webapp</name>
+    <name>presentation-template</name>
     <properties>
 		<nodejs>v4.2.1</nodejs>
 		<npm>2.14.8</npm>
@@ -15,7 +15,7 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>0.0.28</version>
+                <version>0.0.29</version>
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -66,28 +66,6 @@
                     </execution>
                 </executions>
             </plugin>            
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <id>create-war-maven-war-plugin</id>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <dependentWarIncludes>**</dependentWarIncludes>
-                    <warSourceDirectory>target/grunt-dist</warSourceDirectory>
-                    <warSourceExcludes>bower_components/**,scss/**</warSourceExcludes>
-                    <archive>
-                        <manifest>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                        </manifest>
-                        <manifestEntries>
-                            <Svn-Revision>${SVN_REVISION}</Svn-Revision>
-                            <Build-Tag>${BUILD_TAG}</Build-Tag>
-                            <Build-Number>${BUILD_NUMBER}</Build-Number>
-                            <Build-Id>${BUILD_ID}</Build-Id>
-                            <Specification-Version>${project.version} build:${BUILD_NUMBER} ${timestamp}</Specification-Version>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <dependencies>
