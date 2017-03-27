@@ -112,6 +112,8 @@ module.exports = function(grunt) {
 				'lib/**',
 				'images/**',
 				'plugin/**',
+				'content/**',
+				'bower_components/font-awesome'
 				'**.md'
 			]
 		},
